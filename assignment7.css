@@ -1,0 +1,74 @@
+/*
+This is left as a comment in case I want to change the input style at a later point in time
+input {
+    width: 75%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
+*/
+
+h1, h2 {
+    padding: 10px;
+    margin: 10px;
+}
+
+body {
+    background-color:#f1f1f1;
+  }
+
+/* Style the submit button */
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    width: relative;
+    height: relative;
+    font-size: 150%;
+}
+  
+/* Style the container for inputs */
+.form {
+    padding: 20px;
+}
+
+/* The message box is shown when the user clicks on the password field */
+#message {
+    display:none;
+    background: mistyrose;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+}
+#message p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+  
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: green;
+}
+.valid:before {
+    position: relative;
+    left: -35px;
+    content: "\2714";
+}
+  
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+    color: red;
+}
+.invalid:before {
+    position: relative;
+    left: -35px;
+    content: "\2716";
+}
+
+/*Doing so that making the window smaller / viewing the website on a smaller screen will not mess up the experience*/
+@media screen and (max-width:1000px) {
+  }
+  

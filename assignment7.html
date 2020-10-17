@@ -1,0 +1,86 @@
+<!-- Following given conventions when creating an HTML file-->
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Assignment 4 besvarelse">
+    <meta name="author" content="Sebastian Butler">
+
+    <!--Giving the browser instructions on how to control the page's dimensions and scaling based on the screen's size-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Linking to an external CSS file to control the page´s layout-->
+    <link rel="stylesheet" href="assignment7.css">
+    <title>Assignment 7</title>
+</head>
+
+<body>
+<h1>Assignment 7</h1>
+<h2>Please input your information</h2>
+
+<!--Making a div element to easier allow for CSS-styling
+If the user submits the form (and nothing is invalid) the submitConf() is called
+Creating labels for inputting the required information; the "for" refers to the inputs ID
+All inputs are set to required - if they are not filled out correctly an error is displayed (onvalid=setCustomValidity...)
+----- This could also be done with the following methods https://www.w3schools.com/JSREF/tryit.asp?filename=tryjsref_oninvalid_addeventlistener 
+-------or https://www.w3schools.com/js/tryit.asp?filename=tryjs_validation_js
+---------which displays an alert pop up box. In this case the code would have been integrated in Javascript as well instead of HTML
+----------- another alternative is to use the focus / blur element https://javascript.info/focus-blur where the code again could be written in JS
+--------------- another alternative https://www.w3schools.com/js/tryit.asp?filename=tryjs_validation_check
+By setting the genders type to radio a radiobutton is added that can be checked/unchecked
+The Pattern in CPR, password and email defines allowed inputs - all are borrowed from different internet sources:
+CPR: https://euromind.com/felt-for-cpr-nummer/
+Mail: https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_email_pattern
+Password: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_password_val
+The user is also given the option to show/hide their CPR and Password-->
+
+<form onsubmit=submitConf()>
+    <div class="remember">
+        <label for="firstname">First name:</label><br>
+        <input type="text" id="firstname" name="firstname" required oninvalid="setCustomValidity('Please enter your first name')" oninput="setCustomValidity('')"><br><br>
+        <label for="lastname">Last name:</label><br>
+        <input type="text" id="lastname" name="lastname" required oninvalid="setCustomValidity('Please enter your last name')" oninput="setCustomValidity('')"><br><br>
+        <label for="birthdate">Birthdate:</label><br>
+        <input type="date" id="birthdate" name="birthdate" required oninvalid="setCustomValidity('Please select a date')" oninput="setCustomValidity('')"><br><br>
+        <div id="gender">
+        Select gender:<br>
+            <input type="radio" id="male" name="gender" value="male" required oninvalid="setCustomValidity('Please select a gender')" oninput="setCustomValidity('')">
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label><br>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label><br><br><br>
+        </div>
+        <label for="cpr">CPR-number:</label><br>
+        <input type="password" id="cpr" name="cpr" required oninvalid="setCustomValidity('Please enter a valid CPR-number')" oninput="setCustomValidity('')"pattern="(((0[1-9]|[12][0-9]|30)(0[13-9]|1[012])|31(0[13578]|1[02])|(0[1-9]|1[0-9]|2[0-8])02)[0-9]{2}|2902((([2468][048]|[02468][48])|[13579][26])|([13579][26]|[02468][048]|0[0-9]|1[0-6])00))(-|\s)?\d{4}"><br>
+        <input type="checkbox" onclick="showCPR()">Show CPR-number<br><br>
+        <label for="email">Email address:</label><br>
+        <input type="email" id="email" name="email" required oninvalid="setCustomValidity('Please enter valid email address')" oninput="setCustomValidity('')" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"><br><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required oninvalid="setCustomValidity('Please select a valid password')" oninput="setCustomValidity('')" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}"><br>
+        <input type="checkbox" onclick="showPassword()">Show Password<br><br>
+        <label for="profilepic">Profile picture:</label><br>
+        <input type="file" id="profilepic" name="profilepic" required oninvalid="setCustomValidity('Please choose a profile picture')"  onchange="setCustomValidity(''); validatePicture()" accept="image/*"/><br><br><br>
+        <input type="submit" id="submit" value="Submit"><br><br>
+    </div>
+    <div class="forget">
+        <label for="forget">Forget everything</label>
+        <input id="forget" type="reset" value="Forget Everything">
+    </div>
+</form>
+
+<!--Spørgsmål - hvordan får jeg alt det med oninvalid og oninput ind i javascript på nogenlunde samme format, dvs. fejlen kommer på samme måde-->
+
+<!--Creating a div element that displays a message about the password requirements-->
+<div id="message">
+    <h3>Password must contain the following:</h3>
+    <p id="lowercase" class="invalid">A <b>lowercase</b> letter</p>
+    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+    <p id="number" class="invalid">A <b>number</b></p>
+    <p id="length" class="invalid">Between <b>6-16 characters</b></p>
+</div>
+
+<script src="assignment7.js"></script>
+
+</body>
+</html>
